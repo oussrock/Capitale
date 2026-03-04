@@ -420,6 +420,88 @@ section { padding: 90px 60px; }
 .author-name { font-size: 14px; font-weight: 700; }
 .author-loc { font-size: 11px; color: var(--grey); letter-spacing: 1px; }
 
+/* ===== SOUMISSION FORM ===== */
+.soumission-section {
+  position: relative; padding: 90px 60px;
+  background: var(--navy-mid);
+}
+.soumission-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80');
+  background-size: cover; background-position: center;
+  opacity: 0.07; z-index: 0;
+}
+.soumission-section > * { position: relative; z-index: 1; }
+
+.soumission-layout {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 70px; align-items: start; margin-top: 50px;
+}
+.soumission-info { display: flex; flex-direction: column; gap: 28px; }
+.soumission-info-item { display: flex; gap: 16px; align-items: flex-start; }
+.soumission-info-icon {
+  width: 46px; height: 46px; min-width: 46px;
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px; display: flex; align-items: center;
+  justify-content: center; font-size: 20px;
+}
+.soumission-info-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.soumission-info-item p  { font-size: 13px; color: var(--grey); line-height: 1.5; }
+.soumission-info-item a  { color: var(--gold); text-decoration: none; }
+.soumission-info-item a:hover { color: var(--gold-light); }
+
+.form-card {
+  background: rgba(26,45,69,0.7);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 10px; padding: 44px; position: relative;
+}
+.form-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 10px 10px 0 0;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+.form-group label { font-size: 11px; letter-spacing: 2px; color: var(--gold); font-weight: 600; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(13,27,46,0.8);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px; padding: 13px 16px;
+  color: var(--white); font-family: 'Rajdhani', sans-serif;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%; outline: none; appearance: none; -webkit-appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(138,154,176,0.7); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(201,168,76,0.6);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer;
+}
+.form-group select option { background: #0d1b2e; color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  margin-top: 8px; width: 100%;
+  background: var(--gold); color: var(--navy);
+  padding: 16px 32px; font-family: 'Rajdhani', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 2px;
+  border: none; border-radius: 4px; cursor: pointer; transition: all 0.25s;
+}
+.form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,168,76,0.3); }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success .checkmark { font-size: 52px; margin-bottom: 16px; }
+.form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); margin-bottom: 10px; }
+.form-success p { color: var(--grey); font-size: 14px; line-height: 1.6; }
+
 /* ===== CONTACT ===== */
 .contact-section {
   position: relative; text-align: center; overflow: hidden;
@@ -452,6 +534,29 @@ section { padding: 90px 60px; }
   text-decoration: none; transition: color 0.2s; line-height: 1;
 }
 .phone-big:hover { color: var(--gold-light); }
+
+.contact-divider {
+  width: 100%; display: flex; align-items: center; gap: 14px;
+  color: var(--grey); font-size: 11px; letter-spacing: 2px;
+}
+.contact-divider::before, .contact-divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.15);
+}
+
+.btn-email {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--gold);
+  padding: 14px 28px; font-family: 'Rajdhani', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  border: 1px solid rgba(201,168,76,0.4); border-radius: 2px;
+  text-decoration: none; cursor: pointer; transition: all 0.25s;
+  white-space: nowrap; width: 100%; justify-content: center;
+}
+.btn-email:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: var(--gold); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.15);
+}
 .license { font-size: 11px; color: var(--grey); letter-spacing: 2px; }
 .contact-badges {
   display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
@@ -530,6 +635,12 @@ footer {
   .testimonials-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 36px; }
   .testimonial-card { padding: 26px 18px; }
 
+  /* Soumission */
+  .soumission-section { padding: 60px 24px; }
+  .soumission-layout { grid-template-columns: 1fr; gap: 36px; }
+  .form-card { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+
   /* Contact */
   .contact-section { padding: 60px 24px 100px; }
   .contact-box { padding: 30px 20px; }
@@ -567,6 +678,7 @@ footer {
     <li><a href="#services" data-fr="Services" data-en="Services">Services</a></li>
     <li><a href="#about"    data-fr="À Propos"  data-en="About">À Propos</a></li>
     <li><a href="#temoignages" data-fr="Témoignages" data-en="Reviews">Témoignages</a></li>
+    <li><a href="#soumission"  data-fr="Soumission"  data-en="Estimate">Soumission</a></li>
     <li><a href="#contact" class="nav-cta" data-fr="Nous Contacter" data-en="Contact Us">Nous Contacter</a></li>
   </ul>
 
@@ -586,6 +698,7 @@ footer {
   <a href="#services"    onclick="closeMenu()" data-fr="Services"      data-en="Services">Services</a>
   <a href="#about"       onclick="closeMenu()" data-fr="À Propos"      data-en="About">À Propos</a>
   <a href="#temoignages" onclick="closeMenu()" data-fr="Témoignages"   data-en="Reviews">Témoignages</a>
+  <a href="#soumission"  onclick="closeMenu()" data-fr="Soumission"    data-en="Estimate">Soumission</a>
   <a href="#contact" class="mobile-cta" onclick="closeMenu()" data-fr="Nous Contacter" data-en="Contact Us">Nous Contacter</a>
   <div class="mobile-lang">
     <button class="lang-btn active" id="btn-fr-m" onclick="setLang('fr')">FR</button>
@@ -713,7 +826,7 @@ footer {
         <span data-fr="Disponible maintenant" data-en="Available now">Disponible maintenant</span>
       </div>
       <div class="floating-badge floating-badge-2">
-        ✓ <span data-fr="Licence RBQ: 1234-5678" data-en="RBQ License: 1234-5678">Licence RBQ: 1234-5678</span>
+        ✓ <span data-fr="Licence RBQ: 5877-4266" data-en="RBQ License: 5877-4266">Licence RBQ: 5877-4266</span>
       </div>
     </div>
     <div>
@@ -811,6 +924,120 @@ footer {
   </div>
 </section>
 
+<!-- SOUMISSION FORM -->
+<section class="soumission-section" id="soumission">
+  <div class="section-label" data-fr="SOUMISSION GRATUITE" data-en="FREE ESTIMATE">SOUMISSION GRATUITE</div>
+  <div class="section-title" data-fr="Demandez Votre<br>Soumission" data-en="Request Your<br>Free Estimate">Demandez Votre<br>Soumission</div>
+  <p class="section-desc"
+     data-fr="Remplissez le formulaire et nous vous contacterons dans les 24 heures. Sans frais, sans engagement."
+     data-en="Fill out the form and we'll get back to you within 24 hours. No charge, no obligation.">
+    Remplissez le formulaire et nous vous contacterons dans les 24 heures. Sans frais, sans engagement.
+  </p>
+
+  <div class="soumission-layout">
+    <!-- Left info panel -->
+    <div class="soumission-info fade-in">
+      <div class="soumission-info-item">
+        <div class="soumission-info-icon">📞</div>
+        <div>
+          <h4 data-fr="Téléphone" data-en="Phone">Téléphone</h4>
+          <p><a href="tel:5144420219">514 442-0219</a></p>
+          <p data-fr="Disponible 24h/7j pour les urgences" data-en="Available 24/7 for emergencies">Disponible 24h/7j pour les urgences</p>
+        </div>
+      </div>
+      <div class="soumission-info-item">
+        <div class="soumission-info-icon">✉️</div>
+        <div>
+          <h4 data-fr="Courriel" data-en="Email">Courriel</h4>
+          <p><a href="mailto:Contact@capitalectrique.ca">Contact@capitalectrique.ca</a></p>
+          <p data-fr="Réponse sous 24 heures" data-en="Response within 24 hours">Réponse sous 24 heures</p>
+        </div>
+      </div>
+      <div class="soumission-info-item">
+        <div class="soumission-info-icon">📍</div>
+        <div>
+          <h4 data-fr="Zone Desservie" data-en="Service Area">Zone Desservie</h4>
+          <p data-fr="Montréal, Laval, Rive-Nord, Rive-Sud et environs" data-en="Montreal, Laval, North Shore, South Shore and surrounding areas">Montréal, Laval, Rive-Nord, Rive-Sud et environs</p>
+        </div>
+      </div>
+      <div class="soumission-info-item">
+        <div class="soumission-info-icon">🏆</div>
+        <div>
+          <h4 data-fr="Licence RBQ" data-en="RBQ License">Licence RBQ</h4>
+          <p>5877-4266</p>
+          <p data-fr="Travaux certifiés et assurés" data-en="Certified and insured work">Travaux certifiés et assurés</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right form -->
+    <div class="form-card fade-in">
+      <div id="formContent">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-fr="PRÉNOM *" data-en="FIRST NAME *">PRÉNOM *</label>
+            <input type="text" id="firstName" data-placeholder-fr="Jean" data-placeholder-en="John" placeholder="Jean" required>
+          </div>
+          <div class="form-group">
+            <label data-fr="NOM *" data-en="LAST NAME *">NOM *</label>
+            <input type="text" id="lastName" data-placeholder-fr="Tremblay" data-placeholder-en="Smith" placeholder="Tremblay" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-fr="TÉLÉPHONE *" data-en="PHONE *">TÉLÉPHONE *</label>
+            <input type="tel" id="phone" data-placeholder-fr="514 000-0000" data-placeholder-en="514 000-0000" placeholder="514 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label data-fr="COURRIEL" data-en="EMAIL">COURRIEL</label>
+            <input type="email" id="email" data-placeholder-fr="exemple@email.com" data-placeholder-en="example@email.com" placeholder="exemple@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-fr="TYPE DE SERVICE *" data-en="TYPE OF SERVICE *">TYPE DE SERVICE *</label>
+          <select id="serviceType" required>
+            <option value="" data-fr="— Sélectionnez un service —" data-en="— Select a service —">— Sélectionnez un service —</option>
+            <option value="installation"      data-fr="Installation électrique" data-en="Electrical Installation">Installation électrique</option>
+            <option value="renovation"        data-fr="Rénovation électrique"   data-en="Electrical Renovation">Rénovation électrique</option>
+            <option value="urgence"           data-fr="Panne &amp; Urgence"     data-en="Outage &amp; Emergency">Panne &amp; Urgence</option>
+            <option value="panneau"           data-fr="Mise à niveau panneau"   data-en="Panel Upgrade">Mise à niveau panneau</option>
+            <option value="inspection"        data-fr="Inspection électrique"   data-en="Electrical Inspection">Inspection électrique</option>
+            <option value="eclairage"         data-fr="Éclairage &amp; Luminaires" data-en="Lighting &amp; Fixtures">Éclairage &amp; Luminaires</option>
+            <option value="commercial"        data-fr="Travaux commerciaux"     data-en="Commercial Work">Travaux commerciaux</option>
+            <option value="autre"             data-fr="Autre"                   data-en="Other">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-fr="TYPE DE BÂTIMENT" data-en="BUILDING TYPE">TYPE DE BÂTIMENT</label>
+          <select id="buildingType">
+            <option value="" data-fr="— Sélectionnez —" data-en="— Select —">— Sélectionnez —</option>
+            <option value="maison"     data-fr="Maison unifamiliale" data-en="Single-family home">Maison unifamiliale</option>
+            <option value="condo"      data-fr="Condo / Appartement" data-en="Condo / Apartment">Condo / Appartement</option>
+            <option value="duplex"     data-fr="Duplex / Triplex"    data-en="Duplex / Triplex">Duplex / Triplex</option>
+            <option value="commercial" data-fr="Commercial"          data-en="Commercial">Commercial</option>
+            <option value="industriel" data-fr="Industriel"          data-en="Industrial">Industriel</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-fr="MESSAGE / DESCRIPTION DU PROJET" data-en="MESSAGE / PROJECT DESCRIPTION">MESSAGE / DESCRIPTION DU PROJET</label>
+          <textarea id="message" data-placeholder-fr="Décrivez votre projet ou problème électrique..." data-placeholder-en="Describe your electrical project or issue..." placeholder="Décrivez votre projet ou problème électrique..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()" data-fr="⚡ ENVOYER MA DEMANDE" data-en="⚡ SEND MY REQUEST">⚡ ENVOYER MA DEMANDE</button>
+      </div>
+
+      <!-- Success message -->
+      <div class="form-success" id="formSuccess">
+        <div class="checkmark">✅</div>
+        <h3 data-fr="Demande envoyée!" data-en="Request sent!">Demande envoyée!</h3>
+        <p data-fr="Merci! Nous vous contacterons dans les 24 heures pour discuter de votre projet."
+           data-en="Thank you! We will contact you within 24 hours to discuss your project.">
+          Merci! Nous vous contacterons dans les 24 heures pour discuter de votre projet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="section-label" data-fr="PRÊT À DÉMARRER?" data-en="READY TO START?">PRÊT À DÉMARRER?</div>
@@ -827,9 +1054,13 @@ footer {
       <div class="contact-badge">✓ <span  data-fr="Soumission Gratuite" data-en="Free Estimate">Soumission Gratuite</span></div>
       <div class="contact-badge">🏆 <span data-fr="Licencié RBQ"       data-en="RBQ Licensed">Licencié RBQ</span></div>
     </div>
-    <div class="license" data-fr="Licence RBQ : 1234-5678" data-en="RBQ License: 1234-5678">Licence RBQ : 1234-5678</div>
+    <div class="license" data-fr="Licence RBQ : 5877-4266" data-en="RBQ License: 5877-4266">Licence RBQ : 5877-4266</div>
     <a href="tel:5144420219" class="btn-primary">
       ⚡ <span data-fr="Appeler Maintenant" data-en="Call Now">Appeler Maintenant</span>
+    </a>
+    <div class="contact-divider" data-fr="OU" data-en="OR">OU</div>
+    <a href="mailto:Contact@capitalectrique.ca" class="btn-email">
+      ✉ <span data-fr="Contact@capitalectrique.ca" data-en="Contact@capitalectrique.ca">Contact@capitalectrique.ca</span>
     </a>
   </div>
 </section>
@@ -847,7 +1078,7 @@ footer {
     </div>
   </div>
   <div class="footer-copy" data-fr="© 2025 Capital Électrique. Tous droits réservés." data-en="© 2025 Capital Électrique. All rights reserved.">© 2025 Capital Électrique. Tous droits réservés.</div>
-  <div class="footer-rbq">Licence RBQ : <span>1234-5678</span></div>
+  <div class="footer-rbq">Licence RBQ : <span>5877-4266</span></div>
 </footer>
 
 <script>
@@ -865,6 +1096,31 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
+/* ===== FORM SUBMIT ===== */
+function submitForm() {
+  const firstName   = document.getElementById('firstName').value.trim();
+  const phone       = document.getElementById('phone').value.trim();
+  const serviceType = document.getElementById('serviceType').value;
+  if (!firstName || !phone || !serviceType) {
+    const msg = currentLang === 'fr'
+      ? 'Veuillez remplir les champs obligatoires (Prénom, Téléphone, Type de service).'
+      : 'Please fill in the required fields (First name, Phone, Type of service).';
+    alert(msg); return;
+  }
+  // Build mailto
+  const lastName    = document.getElementById('lastName').value.trim();
+  const email       = document.getElementById('email').value.trim();
+  const building    = document.getElementById('buildingType').value;
+  const message     = document.getElementById('message').value.trim();
+  const subject     = encodeURIComponent('Demande de soumission — Capital Électrique');
+  const body        = encodeURIComponent(
+    `Nom: ${firstName} ${lastName}\nTéléphone: ${phone}\nCourriel: ${email}\nService: ${serviceType}\nBâtiment: ${building}\n\nMessage:\n${message}`
+  );
+  window.location.href = `mailto:Contact@capitalectrique.ca?subject=${subject}&body=${body}`;
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
 /* ===== LANGUAGE SWITCH ===== */
 let currentLang = 'fr';
 function setLang(lang) {
@@ -878,9 +1134,18 @@ function setLang(lang) {
     if (el) el.classList.toggle('active', lang === 'en');
   });
   document.documentElement.lang = lang;
+  // Translate text content
   document.querySelectorAll('[data-fr][data-en]').forEach(el => {
     const text = el.getAttribute('data-' + lang);
     if (text !== null) el.innerHTML = text;
+  });
+  // Translate placeholders
+  document.querySelectorAll('[data-placeholder-fr][data-placeholder-en]').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-' + lang);
+  });
+  // Translate select options
+  document.querySelectorAll('select option[data-fr][data-en]').forEach(opt => {
+    opt.textContent = opt.getAttribute('data-' + lang);
   });
 }
 
