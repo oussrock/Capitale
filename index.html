@@ -2,9 +2,111 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Capital Électrique — Électricien licencié à Montréal. Installation, rénovation, panne & urgence, mise à niveau de panneau. Appelez le 514 442-0219.">
-<title>Capital Électrique | Électricien Montréal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Capital Électrique — Électricien licencié RBQ à Montréal & Sherbrooke. Installation, rénovation, urgence 24/7, panneau électrique. Service rapide et sécuritaire.">
+<meta name="keywords" content="électricien Montréal, électricien Sherbrooke, électricien Estrie, maître électricien, urgence électrique Montréal, électricien Magog, installation borne de recharge, changement panneau électrique">
+<link rel="canonical" href="https://capitalelectrique.ca/" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://capitalelectrique.ca/">
+<meta property="og:title" content="Capital Électrique | Électricien Licencié Montréal & Sherbrooke">
+<meta property="og:description" content="Services électriques professionnels à Montréal et Sherbrooke. Urgence 24/7, installations et rénovations par des experts certifiés.">
+<meta property="og:image" content="https://capitalelectrique.ca/og-image.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://capitalelectrique.ca/">
+<meta property="twitter:title" content="Capital Électrique | Électricien Certifié">
+<meta property="twitter:description" content="Électricien licencié RBQ desservant Montréal, Sherbrooke et les environs. Travaux garantis et sécuritaires.">
+<meta property="twitter:image" content="https://capitalelectrique.ca/og-image.jpg">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "name": "Capital Électrique",
+  "image": "https://capitalelectrique.ca/logo.png",
+  "@id": "https://capitalelectrique.ca/",
+  "url": "https://capitalelectrique.ca/",
+  "telephone": "+15144420219",
+  "priceRange": "$$",
+  "description": "Maître électricien licencié RBQ desservant Montréal, Sherbrooke et l'Estrie. Urgence 24/7, installation de bornes de recharge et changement de panneau.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.5017,
+    "longitude": -73.5673
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Montréal"
+    },
+    {
+      "@type": "City",
+      "name": "Sherbrooke"
+    },
+    {
+      "@type": "City",
+      "name": "Laval"
+    },
+    {
+      "@type": "City",
+      "name": "Longueuil"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services Électriques",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Installation Électrique"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Urgence Électrique 24/7"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mise à niveau de panneau"
+        }
+      }
+    ]
+  }
+}
+</script>
+
+<title>Capital Électrique | Électricien Montréal & Sherbrooke | Licence RBQ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -132,8 +234,13 @@ nav {
   z-index: 1000; flex-direction: column;
   align-items: center; justify-content: center;
   padding: 80px 32px 60px;
+  cursor: pointer;
 }
 .mobile-menu.open { display: flex; }
+.mobile-menu > * { cursor: default; }
+
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
 .mobile-menu a {
   display: block; width: 100%; text-align: center;
   text-decoration: none; color: var(--white);
@@ -724,13 +831,13 @@ footer {
       <span class="dot"></span>
       <span data-fr="Électricien Licencié — Montréal &amp; Environs" data-en="Licensed Electrician — Montreal &amp; Area">Électricien Licencié — Montréal &amp; Environs</span>
     </div>
-    <h1 data-fr="<em>L'ÉLECTRICITÉ</em><br>FAITE AVEC<br>PRÉCISION." data-en="<em>ELECTRICAL</em><br>WORK DONE<br>RIGHT.">
-      <em>L'ÉLECTRICITÉ</em><br>FAITE AVEC<br>PRÉCISION.
+    <h1 data-fr="<em>MAÎTRE ÉLECTRICIEN</em><br>À MONTRÉAL &amp;<br>SHERBROOKE." data-en="<em>MASTER ELECTRICIAN</em><br>IN MONTREAL &amp;<br>SHERBROOKE.">
+      <em>MAÎTRE ÉLECTRICIEN</em><br>À MONTRÉAL &amp;<br>SHERBROOKE.
     </h1>
     <p class="hero-sub"
-       data-fr="Services électriques résidentiels et commerciaux à Montréal. Rapide, fiable et sécuritaire — du premier appel jusqu'à la fin des travaux."
-       data-en="Residential and commercial electrical services in Montreal. Fast, reliable, and safe — from the first call to the final inspection.">
-      Services électriques résidentiels et commerciaux à Montréal. Rapide, fiable et sécuritaire — du premier appel jusqu'à la fin des travaux.
+       data-fr="Capital Électrique : Votre expert électricien certifié RBQ pour Montréal, Sherbrooke et l'Estrie. Urgence 24/7, installation de bornes de recharge et rénovation de panneau."
+       data-en="Capital Electrique: Your RBQ-certified expert electrician for Montreal, Sherbrooke, and Estrie. 24/7 emergency service, EV charger installation, and panel upgrades.">
+      Capital Électrique : Votre expert électricien certifié RBQ pour Montréal, Sherbrooke et l'Estrie. Urgence 24/7, installation de bornes de recharge et rénovation de panneau.
     </p>
     <div class="hero-actions">
       <a href="tel:5144420219" class="btn-primary">
@@ -799,10 +906,18 @@ footer {
     </div>
     <div class="service-card fade-in">
       <div class="service-icon">🛡️</div>
-      <h3 data-fr="Mise à Niveau Panneau" data-en="Panel Upgrade">Mise à Niveau Panneau</h3>
-      <p data-fr="Remplacement et modernisation de panneaux électriques vieillissants pour plus de puissance et de sécurité."
-         data-en="Replacement and modernization of aging electrical panels for more power, safety, and reliability.">
-        Remplacement et modernisation de panneaux électriques vieillissants pour plus de puissance et de sécurité.
+      <h3 data-fr="Changement de Panneau" data-en="Panel Upgrade">Changement de Panneau</h3>
+      <p data-fr="Spécialiste en remplacement de panneau électrique à Montréal et Sherbrooke. Modernisation sécuritaire selon le code de l'électricité."
+         data-en="Specialist in electrical panel replacement in Montreal and Sherbrooke. Safe modernization according to the electrical code.">
+        Spécialiste en remplacement de panneau électrique à Montréal et Sherbrooke. Modernisation sécuritaire selon le code de l'électricité.
+      </p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🔌</div>
+      <h3 data-fr="Borne de Recharge" data-en="EV Charging Station">Borne de Recharge</h3>
+      <p data-fr="Installation certifiée de bornes de recharge pour véhicules électriques à domicile. Éligible aux subventions gouvernementales."
+         data-en="Certified installation of home EV charging stations. Eligible for government grants.">
+        Installation certifiée de bornes de recharge pour véhicules électriques à domicile. Éligible aux subventions gouvernementales.
       </p>
     </div>
   </div>
@@ -1065,6 +1180,43 @@ footer {
   </div>
 </section>
 
+<!-- SERVICE AREAS SEO SECTION -->
+<section id="zones" style="background: var(--navy-mid); border-top: 1px solid rgba(201,168,76,0.1); padding: 50px 60px;">
+  <div class="section-label" data-fr="ZONES DESSERVIES" data-en="AREAS WE SERVE">ZONES DESSERVIES</div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 20px;">
+    <div>
+      <h4 style="color: var(--gold); margin-bottom: 10px;">Montréal</h4>
+      <ul style="list-style: none; font-size: 13px; color: var(--grey); line-height: 1.8;">
+        <li>Plateau Mont-Royal</li>
+        <li>Rosemont-La Petite-Patrie</li>
+        <li>Ahuntsic-Cartierville</li>
+        <li>Villeray & Saint-Michel</li>
+        <li>Lachine & LaSalle</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: var(--gold); margin-bottom: 10px;">Sherbrooke & Estrie</h4>
+      <ul style="list-style: none; font-size: 13px; color: var(--grey); line-height: 1.8;">
+        <li>Sherbrooke (Lennoxville, Fleurimont)</li>
+        <li>Magog & Orford</li>
+        <li>North Hatley</li>
+        <li>Bromont & Granby</li>
+        <li>Canton de l'Est</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: var(--gold); margin-bottom: 10px;">Rive-Nord & Rive-Sud</h4>
+      <ul style="list-style: none; font-size: 13px; color: var(--grey); line-height: 1.8;">
+        <li>Laval</li>
+        <li>Longueuil & Brossard</li>
+        <li>Terrebonne</li>
+        <li>Saint-Jérôme</li>
+        <li>Boucherville</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
@@ -1074,7 +1226,7 @@ footer {
     </svg>
     <div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;letter-spacing:3px;">CAPITAL ÉLECTRIQUE</div>
-      <div style="font-size:10px;color:var(--grey);letter-spacing:2px;" data-fr="Puissance · Fiabilité · Sécurité" data-en="Power · Reliability · Safety">Puissance · Fiabilité · Sécurité</div>
+      <div id="footer-tagline" style="font-size:10px;color:var(--grey);letter-spacing:2px;" data-fr="Puissance · Fiabilité · Sécurité" data-en="Power · Reliability · Safety">Puissance · Fiabilité · Sécurité</div>
     </div>
   </div>
   <div class="footer-copy" data-fr="© 2025 Capital Électrique. Tous droits réservés." data-en="© 2025 Capital Électrique. All rights reserved.">© 2025 Capital Électrique. Tous droits réservés.</div>
@@ -1095,21 +1247,39 @@ function closeMenu() {
   document.getElementById('hamburger').classList.remove('open');
   document.body.style.overflow = '';
 }
+// Close menu on overlay click
+document.getElementById('mobileMenu').addEventListener('click', (e) => {
+  if (e.target.id === 'mobileMenu') closeMenu();
+});
 
 /* ===== FORM SUBMIT ===== */
 function submitForm() {
   const firstName   = document.getElementById('firstName').value.trim();
   const phone       = document.getElementById('phone').value.trim();
+  const email       = document.getElementById('email').value.trim();
   const serviceType = document.getElementById('serviceType').value;
+  
   if (!firstName || !phone || !serviceType) {
     const msg = currentLang === 'fr'
       ? 'Veuillez remplir les champs obligatoires (Prénom, Téléphone, Type de service).'
       : 'Please fill in the required fields (First name, Phone, Type of service).';
     alert(msg); return;
   }
+
+  // Basic Validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email && !emailRegex.test(email)) {
+    alert(currentLang === 'fr' ? 'Format de courriel invalide.' : 'Invalid email format.');
+    return;
+  }
+
+  const alertMsg = currentLang === 'fr' 
+    ? "Votre application de messagerie va s'ouvrir pour envoyer le courriel."
+    : "Your email application will open to send the request.";
+  alert(alertMsg);
+
   // Build mailto
   const lastName    = document.getElementById('lastName').value.trim();
-  const email       = document.getElementById('email').value.trim();
   const building    = document.getElementById('buildingType').value;
   const message     = document.getElementById('message').value.trim();
   const subject     = encodeURIComponent('Demande de soumission — Capital Électrique');
@@ -1119,6 +1289,12 @@ function submitForm() {
   window.location.href = `mailto:Contact@capitalectrique.ca?subject=${subject}&body=${body}`;
   document.getElementById('formContent').style.display = 'none';
   document.getElementById('formSuccess').style.display = 'block';
+}
+
+function resetForm() {
+  document.getElementById('formContent').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.querySelectorAll('#formContent input, #formContent select, #formContent textarea').forEach(el => el.value = '');
 }
 
 /* ===== LANGUAGE SWITCH ===== */
@@ -1134,6 +1310,16 @@ function setLang(lang) {
     if (el) el.classList.toggle('active', lang === 'en');
   });
   document.documentElement.lang = lang;
+
+  // Update Title and Meta Description for SEO
+  if (lang === 'fr') {
+    document.title = "Capital Électrique | Électricien Montréal & Sherbrooke | Licence RBQ";
+    document.querySelector('meta[name="description"]').setAttribute("content", "Capital Électrique — Électricien licencié RBQ à Montréal & Sherbrooke. Installation, rénovation, urgence 24/7, panneau électrique. Service rapide.");
+  } else {
+    document.title = "Capital Electrique | Licensed Electrician Montreal & Sherbrooke | RBQ";
+    document.querySelector('meta[name="description"]').setAttribute("content", "Capital Electrique — RBQ licensed electrician in Montreal & Sherbrooke. Installation, renovation, 24/7 emergency, electrical panel. Fast service.");
+  }
+
   // Translate text content
   document.querySelectorAll('[data-fr][data-en]').forEach(el => {
     const text = el.getAttribute('data-' + lang);
@@ -1149,11 +1335,34 @@ function setLang(lang) {
   });
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
+// Auto-detect language on load
+window.addEventListener('DOMContentLoaded', () => {
+  const userLang = navigator.language || navigator.userLanguage;
+  if (userLang.startsWith('en')) {
+    setLang('en');
+  }
+});
+
+/* ===== SCROLL ANIMATIONS & SCROLLSPY ===== */
+const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+}, observerOptions);
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ScrollSpy Logic
+const spyOptions = { threshold: 0.5 };
+const spyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, spyOptions);
+document.querySelectorAll('section[id]').forEach(section => spyObserver.observe(section));
 
 /* ===== NAV SHRINK ON SCROLL ===== */
 window.addEventListener('scroll', () => {
