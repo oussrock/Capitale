@@ -410,6 +410,7 @@ section { padding: 90px 60px; }
 .service-card {
   background: rgba(13,27,46,0.85);
   padding: 40px 30px; position: relative; overflow: hidden; transition: all 0.3s;
+  cursor: pointer; display: flex; flex-direction: column;
 }
 .service-card::after {
   content: ''; position: absolute; bottom: 0; left: 0;
@@ -429,7 +430,53 @@ section { padding: 90px 60px; }
   font-family: 'Cormorant Garamond', serif; font-size: 22px;
   font-weight: 700; margin-bottom: 10px; color: var(--white);
 }
-.service-card p { font-size: 14px; color: var(--grey); line-height: 1.65; }
+.service-card p { font-size: 14px; color: var(--grey); line-height: 1.65; margin-bottom: 20px; }
+.service-price {
+  font-size: 12px; font-weight: 700; color: var(--gold);
+  letter-spacing: 1.5px; margin-top: auto; padding-top: 15px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.service-learn-more {
+  font-size: 11px; color: var(--white); text-decoration: underline;
+  margin-top: 10px; opacity: 0.7; transition: opacity 0.2s;
+}
+.service-card:hover .service-learn-more { opacity: 1; }
+
+/* ===== SERVICE MODAL ===== */
+.service-modal {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(8,14,26,0.95);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px; backdrop-filter: blur(8px);
+}
+.service-modal.active { display: flex; animation: fadeIn 0.3s ease; }
+.modal-content {
+  background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px; max-width: 600px; width: 100%;
+  position: relative; overflow: hidden; max-height: 90vh; overflow-y: auto;
+}
+.modal-header {
+  padding: 40px 40px 20px; background: rgba(201,168,76,0.05);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.modal-header .service-icon { margin-bottom: 15px; }
+.modal-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--white); }
+.modal-body { padding: 30px 40px 40px; }
+.modal-body h4 { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
+.modal-body p { color: var(--grey); line-height: 1.7; font-size: 15px; margin-bottom: 25px; }
+.modal-features { list-style: none; margin-bottom: 30px; }
+.modal-features li { display: flex; align-items: center; gap: 12px; color: var(--white); font-size: 14px; margin-bottom: 12px; }
+.modal-features li::before { content: '⚡'; color: var(--gold); font-size: 12px; }
+.modal-footer {
+  display: flex; gap: 15px; flex-wrap: wrap;
+}
+.modal-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--white);
+  font-size: 24px; cursor: pointer; opacity: 0.5; transition: opacity 0.2s;
+}
+.modal-close:hover { opacity: 1; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
 /* ===== ABOUT / WHY US ===== */
 #about {
@@ -666,6 +713,12 @@ section { padding: 90px 60px; }
   box-shadow: 0 8px 24px rgba(201,168,76,0.15);
 }
 .license { font-size: 11px; color: var(--grey); letter-spacing: 2px; }
+.social-links { display: flex; gap: 15px; margin-top: 10px; }
+.social-link {
+  color: var(--grey); transition: color 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.social-link:hover { color: var(--gold); }
 .contact-badges {
   display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
 }
@@ -675,6 +728,55 @@ section { padding: 90px 60px; }
   padding: 7px 14px; border-radius: 2px;
   font-size: 11px; letter-spacing: 1.5px; color: var(--gold);
 }
+
+/* ===== HOW IT WORKS (WORKFLOW) ===== */
+.workflow-section { background: var(--navy-mid); }
+.workflow-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px; margin-top: 50px;
+}
+.workflow-item { text-align: center; position: relative; }
+.workflow-number {
+  width: 60px; height: 60px; background: rgba(201,168,76,0.1);
+  border: 1px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 24px; font-weight: 700; color: var(--gold);
+}
+.workflow-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 10px; }
+.workflow-item p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+/* ===== FAQ SECTION ===== */
+.faq-section { background: var(--navy-dark); }
+.faq-container { max-width: 800px; margin: 50px auto 0; }
+.faq-item {
+  border: 1px solid rgba(201,168,76,0.15); border-radius: 4px;
+  margin-bottom: 12px; overflow: hidden; background: rgba(13,27,46,0.5);
+}
+.faq-question {
+  padding: 20px 24px; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  font-weight: 600; font-size: 15px; transition: background 0.3s;
+}
+.faq-question:hover { background: rgba(201,168,76,0.05); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+  background: rgba(8,14,26,0.3);
+}
+.faq-answer p { padding: 0 24px 20px; font-size: 14px; color: var(--grey); line-height: 1.6; }
+.faq-item.active .faq-answer { max-height: 200px; }
+.faq-item.active .faq-question { color: var(--gold); }
+.faq-toggle { font-size: 18px; transition: transform 0.3s; }
+.faq-item.active .faq-toggle { transform: rotate(45deg); color: var(--gold); }
+
+/* ===== FLOATING WHATSAPP ===== */
+.whatsapp-btn {
+  position: fixed; bottom: 30px; right: 30px; z-index: 999;
+  background: #25d366; color: white; width: 60px; height: 60px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 32px; box-shadow: 0 10px 25px rgba(37,211,102,0.3);
+  text-decoration: none; transition: all 0.3s;
+}
+.whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(37,211,102,0.4); }
 
 /* ===== FOOTER ===== */
 footer {
@@ -881,44 +983,104 @@ footer {
     De l'installation à la rénovation, nous couvrons tous vos besoins électriques avec professionnalisme et expertise.
   </p>
   <div class="services-grid">
-    <div class="service-card fade-in">
-      <div class="service-icon">💡</div>
-      <h3 data-fr="Installation" data-en="Installation">Installation</h3>
-      <p data-fr="Installation complète pour constructions neuves, rénovations majeures ou ajouts de circuits électriques."
-         data-en="Complete installation for new builds, major renovations, or adding new electrical circuits.">
-        Installation complète pour constructions neuves, rénovations majeures ou ajouts de circuits électriques.
-      </p>
-    </div>
-    <div class="service-card fade-in">
-      <div class="service-icon">🔧</div>
-      <h3 data-fr="Rénovation" data-en="Renovation">Rénovation</h3>
-      <p data-fr="Mise à jour de votre système électrique existant pour répondre aux normes actuelles et à vos nouveaux besoins."
-         data-en="Upgrade your existing electrical system to meet current standards and your evolving needs.">
-        Mise à jour de votre système électrique existant pour répondre aux normes actuelles et à vos nouveaux besoins.
-      </p>
-    </div>
-    <div class="service-card fade-in">
-      <div class="service-icon">⚡</div>
-      <h3 data-fr="Panne &amp; Urgence" data-en="Outage &amp; Emergency">Panne &amp; Urgence</h3>
-      <p data-fr="Disponibles 24h/7j pour tout problème électrique urgent. Intervention rapide pour protéger votre famille."
-         data-en="Available 24/7 for any urgent electrical problem. Fast response to protect your home and family.">
-        Disponibles 24h/7j pour tout problème électrique urgent. Intervention rapide pour protéger votre famille.
-      </p>
-    </div>
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" onclick="openServiceModal('panel')">
       <div class="service-icon">🛡️</div>
       <h3 data-fr="Changement de Panneau" data-en="Panel Upgrade">Changement de Panneau</h3>
-      <p data-fr="Spécialiste en remplacement de panneau électrique à Montréal et Sherbrooke. Modernisation sécuritaire selon le code de l'électricité."
-         data-en="Specialist in electrical panel replacement in Montreal and Sherbrooke. Safe modernization according to the electrical code.">
-        Spécialiste en remplacement de panneau électrique à Montréal et Sherbrooke. Modernisation sécuritaire selon le code de l'électricité.
+      <p data-fr="Modernisation de votre système électrique pour plus de puissance et de sécurité."
+         data-en="Upgrade your electrical system for more power and enhanced safety.">
+        Modernisation de votre système électrique pour plus de puissance et de sécurité.
       </p>
+      <div class="service-price" data-fr="À partir de 1 500 $" data-en="Starting at $1,500">À partir de 1 500 $</div>
+      <div class="service-learn-more" data-fr="En savoir plus →" data-en="Learn more →">En savoir plus →</div>
     </div>
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" onclick="openServiceModal('ev')">
       <div class="service-icon">🔌</div>
       <h3 data-fr="Borne de Recharge" data-en="EV Charging Station">Borne de Recharge</h3>
-      <p data-fr="Installation certifiée de bornes de recharge pour véhicules électriques à domicile. Éligible aux subventions gouvernementales."
-         data-en="Certified installation of home EV charging stations. Eligible for government grants.">
-        Installation certifiée de bornes de recharge pour véhicules électriques à domicile. Éligible aux subventions gouvernementales.
+      <p data-fr="Installation certifiée pour votre véhicule électrique. Éligible aux subventions."
+         data-en="Certified installation for your electric vehicle. Eligible for government grants.">
+        Installation certifiée pour votre véhicule électrique. Éligible aux subventions.
+      </p>
+      <div class="service-price" data-fr="À partir de 600 $" data-en="Starting at $600">À partir de 600 $</div>
+      <div class="service-learn-more" data-fr="En savoir plus →" data-en="Learn more →">En savoir plus →</div>
+    </div>
+    <div class="service-card fade-in" onclick="openServiceModal('reno')">
+      <div class="service-icon">💡</div>
+      <h3 data-fr="Rénovation Électrique" data-en="Electrical Renovation">Rénovation Électrique</h3>
+      <p data-fr="Mise à jour complète ou partielle de votre câblage et de vos luminaires."
+         data-en="Complete or partial upgrade of your wiring and light fixtures.">
+        Mise à jour complète ou partielle de votre câblage et de vos luminaires.
+      </p>
+      <div class="service-price" data-fr="Taux: 130 $ / h" data-en="Rate: $130 / hr">Taux: 130 $ / h</div>
+      <div class="service-learn-more" data-fr="En savoir plus →" data-en="Learn more →">En savoir plus →</div>
+    </div>
+    <div class="service-card fade-in" onclick="openServiceModal('emergency')">
+      <div class="service-icon">⚡</div>
+      <h3 data-fr="Panne &amp; Urgence 24/7" data-en="24/7 Emergency">Panne &amp; Urgence 24/7</h3>
+      <p data-fr="Intervention rapide en cas de court-circuit, panne totale ou danger électrique."
+         data-en="Fast response for short circuits, total power failure, or electrical hazards.">
+        Intervention rapide en cas de court-circuit, panne totale ou danger électrique.
+      </p>
+      <div class="service-price" data-fr="Urgence: 150 $ / h" data-en="Emergency: $150 / hr">Urgence: 150 $ / h</div>
+      <div class="service-learn-more" data-fr="En savoir plus →" data-en="Learn more →">En savoir plus →</div>
+    </div>
+    <div class="service-card fade-in" onclick="openServiceModal('inspection')">
+      <div class="service-icon">📋</div>
+      <h3 data-fr="Inspection &amp; Sécurité" data-en="Inspection &amp; Safety">Inspection &amp; Sécurité</h3>
+      <p data-fr="Vérification complète de votre installation pour assurer la conformité au code."
+         data-en="Full verification of your installation to ensure code compliance.">
+        Vérification complète de votre installation pour assurer la conformité au code.
+      </p>
+      <div class="service-price" data-fr="À partir de 250 $" data-en="Starting at $250">À partir de 250 $</div>
+      <div class="service-learn-more" data-fr="En savoir plus →" data-en="Learn more →">En savoir plus →</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE MODAL -->
+<div class="service-modal" id="serviceModal" onclick="if(event.target === this) closeServiceModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+    <div id="modalData">
+      <!-- Data injected via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="workflow-section">
+  <div class="section-label" data-fr="NOTRE PROCESSUS" data-en="OUR PROCESS">NOTRE PROCESSUS</div>
+  <div class="section-title" data-fr="Comment Nous<br>Travaillons" data-en="How We<br>Work">Comment Nous<br>Travaillons</div>
+  <div class="workflow-grid">
+    <div class="workflow-item fade-in">
+      <div class="workflow-number">1</div>
+      <h4 data-fr="Contact & Soumission" data-en="Contact & Quote">Contact & Soumission</h4>
+      <p data-fr="Appelez-nous ou remplissez le formulaire en ligne pour obtenir une estimation gratuite."
+         data-en="Call us or fill out the online form to get a free estimate.">
+        Appelez-nous ou remplissez le formulaire en ligne pour obtenir une estimation gratuite.
+      </p>
+    </div>
+    <div class="workflow-item fade-in">
+      <div class="workflow-number">2</div>
+      <h4 data-fr="Évaluation Technique" data-en="Technical Evaluation">Évaluation Technique</h4>
+      <p data-fr="Nous analysons vos besoins sur place pour confirmer le prix et les détails techniques."
+         data-en="We analyze your needs on-site to confirm pricing and technical details.">
+        Nous analysons vos besoins sur place pour confirmer le prix et les détails techniques.
+      </p>
+    </div>
+    <div class="workflow-item fade-in">
+      <div class="workflow-number">3</div>
+      <h4 data-fr="Exécution des Travaux" data-en="Professional Work">Exécution des Travaux</h4>
+      <p data-fr="Nos électriciens licenciés réalisent les travaux avec précision et propreté."
+         data-en="Our licensed electricians perform the work with precision and cleanliness.">
+        Nos électriciens licenciés réalisent les travaux avec précision et propreté.
+      </p>
+    </div>
+    <div class="workflow-item fade-in">
+      <div class="workflow-number">4</div>
+      <h4 data-fr="Sécurité & Garantie" data-en="Safety & Warranty">Sécurité & Garantie</h4>
+      <p data-fr="Inspection finale et remise de votre garantie de satisfaction à 100%."
+         data-en="Final inspection and delivery of your 100% satisfaction guarantee.">
+        Inspection finale et remise de votre garantie de satisfaction à 100%.
       </p>
     </div>
   </div>
@@ -1036,6 +1198,62 @@ footer {
       <div class="testimonial-author">
         <div class="author-avatar">SV</div>
         <div><div class="author-name">Sophie V.</div><div class="author-loc">ROSEMONT</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div class="section-label" data-fr="FOIRE AUX QUESTIONS" data-en="COMMON QUESTIONS">FOIRE AUX QUESTIONS</div>
+  <div class="section-title" data-fr="Questions<br>Fréquentes" data-en="Frequently Asked<br>Questions">Questions<br>Fréquentes</div>
+  <div class="faq-container">
+    <div class="faq-item fade-in">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span data-fr="Offrez-vous des estimations gratuites?" data-en="Do you offer free estimates?">Offrez-vous des estimations gratuites?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p data-fr="Oui, nous offrons des soumissions gratuites et transparentes pour tous vos projets résidentiels et commerciaux à Montréal et Sherbrooke."
+           data-en="Yes, we offer free and transparent estimates for all your residential and commercial projects in Montreal and Sherbrooke.">
+          Oui, nous offrons des soumissions gratuites et transparentes pour tous vos projets résidentiels et commerciaux à Montréal et Sherbrooke.
+        </p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span data-fr="Êtes-vous licenciés par la RBQ?" data-en="Are you RBQ licensed?">Êtes-vous licenciés par la RBQ?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p data-fr="Absolument. Nous sommes membres de la CMEQ et détenons une licence RBQ valide (5877-4266), garantissant des travaux conformes aux normes de sécurité."
+           data-en="Absolutely. We are members of the CMEQ and hold a valid RBQ license (5877-4266), ensuring all work meets safety standards.">
+          Absolument. Nous sommes membres de la CMEQ et détenons une licence RBQ valide (5877-4266), garantissant des travaux conformes aux normes de sécurité.
+        </p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span data-fr="Quelles zones desservez-vous?" data-en="Which areas do you serve?">Quelles zones desservez-vous?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p data-fr="Nous desservons la grande région de Montréal, Laval, Longueuil, ainsi que Sherbrooke, Magog et l'ensemble de l'Estrie."
+           data-en="We serve the greater Montreal area, Laval, Longueuil, as well as Sherbrooke, Magog, and the entire Estrie region.">
+          Nous desservons la grande région de Montréal, Laval, Longueuil, ainsi que Sherbrooke, Magog et l'ensemble de l'Estrie.
+        </p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span data-fr="Êtes-vous disponibles pour les urgences?" data-en="Are you available for emergencies?">Êtes-vous disponibles pour les urgences?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p data-fr="Oui, notre service d'urgence est disponible 24h/24 et 7j/7 pour régler tout problème électrique dangereux ou panne de courant majeure."
+           data-en="Yes, our emergency service is available 24/7 to resolve any hazardous electrical issues or major power outages.">
+          Oui, notre service d'urgence est disponible 24h/24 et 7j/7 pour régler tout problème électrique dangereux ou panne de courant majeure.
+        </p>
       </div>
     </div>
   </div>
@@ -1175,6 +1393,11 @@ footer {
       <div class="contact-badge">🏆 <span data-fr="Licencié RBQ"       data-en="RBQ Licensed">Licencié RBQ</span></div>
     </div>
     <div class="license" data-fr="Licence RBQ : 5877-4266" data-en="RBQ License: 5877-4266">Licence RBQ : 5877-4266</div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61572021112254" class="social-link" target="_blank" aria-label="Facebook">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
     <a href="tel:5144420219" class="btn-primary">
       ⚡ <span data-fr="Appeler Maintenant" data-en="Call Now">Appeler Maintenant</span>
     </a>
@@ -1236,9 +1459,24 @@ footer {
   </div>
   <div class="footer-copy" data-fr="© 2025 Capital Électrique. Tous droits réservés." data-en="© 2025 Capital Électrique. All rights reserved.">© 2025 Capital Électrique. Tous droits réservés.</div>
   <div class="footer-rbq">Licence RBQ : <span>5877-4266</span></div>
+  <div class="social-links" style="margin-top:0;">
+    <a href="https://www.facebook.com/profile.php?id=61572021112254" class="social-link" target="_blank" aria-label="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
 </footer>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/15144420219" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+  <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-2.32 0-4.591 1.399-4.591 4.41 0 1.556.814 2.463 1.225 2.826.115.101.201.19.221.366l.005.04c.063.487-.221.848-.515 1.146-.352.357-.707.713-1.059 1.07-.136.137-.365.158-.523.045-.253-.182-.491-.383-.715-.595-1.144-1.077-1.874-2.585-1.874-4.247 0-3.418 2.8-6.202 6.248-6.202 3.413 0 6.241 2.738 6.241 6.202 0 1.662-.73 3.17-1.874 4.247-.224.212-.462.413-.715.595-.158.113-.387.092-.523-.045-.352-.357-.707-.713-1.059-1.07-.294-.298-.578-.659-.515-1.146l.005-.04c.02-.176.106-.265.221-.366.411-.363 1.225-1.27 1.225-2.826 0-3.011-2.271-4.41-4.591-4.41zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.179l-1.359 4.966 5.073-1.332C8.594 21.498 10.247 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.634 0-3.166-.435-4.484-1.197l-.322-.185-3.033.796.81-2.96-.204-.325C4.015 15.823 3.5 13.974 3.5 12c0-4.687 3.813-8.5 8.5-8.5s8.5 3.813 8.5 8.5-3.813 8.5-8.5 8.5z"/></svg>
+</a>
+
 <script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('active');
+}
+
 /* ===== HAMBURGER MENU ===== */
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
@@ -1252,6 +1490,122 @@ function closeMenu() {
   document.getElementById('hamburger').classList.remove('open');
   document.body.style.overflow = '';
 }
+const serviceData = {
+  panel: {
+    icon: '🛡️',
+    fr: {
+      title: 'Changement de Panneau',
+      desc: 'Remplacez votre vieux panneau à fusibles ou mettez à niveau votre entrée électrique de 100A à 200A pour répondre aux besoins modernes.',
+      features: ['Conformité au code électrique 2026', 'Élimination des risques d\'incendie', 'Capacité accrue pour nouveaux appareils', 'Garantie sur la main-d\'œuvre'],
+      price: 'À partir de 1 500 $'
+    },
+    en: {
+      title: 'Panel Upgrade',
+      desc: 'Replace your old fuse box or upgrade your electrical service from 100A to 200A to meet modern power demands safely.',
+      features: ['2026 Electrical Code compliance', 'Elimination of fire hazards', 'Increased capacity for new appliances', 'Labor warranty included'],
+      price: 'Starting at $1,500'
+    }
+  },
+  ev: {
+    icon: '🔌',
+    fr: {
+      title: 'Borne de Recharge',
+      desc: 'Installation professionnelle de bornes de niveau 2 (240V) pour tous types de véhicules électriques (Tesla, Hyundai, Ford, etc.).',
+      features: ['Installation certifiée RBQ', 'Aide pour subvention de 600 $', 'Protection contre les surcharges', 'Test de performance inclus'],
+      price: 'À partir de 600 $'
+    },
+    en: {
+      title: 'EV Charging Station',
+      desc: 'Professional Level 2 (240V) charger installation for all electric vehicle types (Tesla, Hyundai, Ford, etc.).',
+      features: ['RBQ Certified installation', 'Help with $600 government grant', 'Overload protection', 'Performance testing included'],
+      price: 'Starting at $600'
+    }
+  },
+  reno: {
+    icon: '💡',
+    fr: {
+      title: 'Rénovation Électrique',
+      desc: 'Que ce soit pour une cuisine, un sous-sol ou un ajout, nous gérons tout votre câblage et l\'éclairage de A à Z.',
+      features: ['Éclairage encastré LED', 'Nouveaux circuits dédiés', 'Remplacement de prises/interrupteurs', 'Planification électrique'],
+      price: 'Taux: 130 $ / h'
+    },
+    en: {
+      title: 'Electrical Renovation',
+      desc: 'Whether it\'s for a kitchen, basement, or addition, we handle all your wiring and lighting from start to finish.',
+      features: ['LED pot lights installation', 'New dedicated circuits', 'Outlet/switch replacement', 'Electrical planning'],
+      price: 'Rate: $130 / hr'
+    }
+  },
+  emergency: {
+    icon: '⚡',
+    fr: {
+      title: 'Panne & Urgence 24/7',
+      desc: 'Un problème électrique n\'attend pas. Nous intervenons rapidement pour sécuriser votre domicile et rétablir le courant.',
+      features: ['Disponible 24h / 7 jours', 'Diagnostic rapide', 'Réparation sécuritaire', 'Intervention prioritaire'],
+      price: 'Urgence: 150 $ / h'
+    },
+    en: {
+      title: '24/7 Emergency',
+      desc: 'Electrical problems don\'t wait. We respond quickly to secure your home and restore power.',
+      features: ['Available 24/7', 'Rapid diagnosis', 'Safe repairs', 'Priority intervention'],
+      price: 'Emergency: $150 / hr'
+    }
+  },
+  inspection: {
+    icon: '📋',
+    fr: {
+      title: 'Inspection & Sécurité',
+      desc: 'Assurez-vous que votre maison est sécuritaire. Idéal pour l\'achat d\'une propriété ou pour les assurances.',
+      features: ['Rapport détaillé', 'Vérification du panneau', 'Test des mises à la terre', 'Détection de câblage dangereux'],
+      price: 'À partir de 250 $'
+    },
+    en: {
+      title: 'Inspection & Safety',
+      desc: 'Ensure your home is safe. Ideal for home buyers or insurance requirements.',
+      features: ['Detailed report', 'Panel verification', 'Grounding tests', 'Hazardous wiring detection'],
+      price: 'Starting at $250'
+    }
+  }
+};
+
+function openServiceModal(key) {
+  const data = serviceData[key];
+  const lang = currentLang;
+  const content = data[lang];
+  
+  const html = `
+    <div class="modal-header">
+      <div class="service-icon">${data.icon}</div>
+      <h2>${content.title}</h2>
+    </div>
+    <div class="modal-body">
+      <h4>${lang === 'fr' ? 'À propos du service' : 'About this service'}</h4>
+      <p>${content.desc}</p>
+      <h4>${lang === 'fr' ? 'Inclus dans le service' : 'Included in service'}</h4>
+      <ul class="modal-features">
+        ${content.features.map(f => `<li>${f}</li>`).join('')}
+      </ul>
+      <div class="modal-footer">
+        <a href="#soumission" class="btn-primary" onclick="closeServiceModal()">
+          ${lang === 'fr' ? 'Obtenir une soumission' : 'Get a quote'}
+        </a>
+        <div class="service-price" style="border:none; padding:0; margin:0; display:flex; align-items:center;">
+          ${content.price}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('modalData').innerHTML = html;
+  document.getElementById('serviceModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeServiceModal() {
+  document.getElementById('serviceModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 // Close menu on overlay click
 document.getElementById('mobileMenu').addEventListener('click', (e) => {
   if (e.target.id === 'mobileMenu') closeMenu();
