@@ -1090,29 +1090,32 @@ footer {
     <!-- Right form -->
     <div class="form-card fade-in">
       <div id="formContent">
+        <input type="hidden" id="access_key" name="access_key" value="cf2d5c8b-2552-4703-a2b9-a51be77b42d9">
+        <input type="hidden" id="from_name" name="from_name" value="Capital Électrique">
+        
         <div class="form-row">
           <div class="form-group">
             <label data-fr="PRÉNOM *" data-en="FIRST NAME *">PRÉNOM *</label>
-            <input type="text" id="firstName" data-placeholder-fr="Jean" data-placeholder-en="John" placeholder="Jean" required>
+            <input type="text" id="firstName" name="firstName" data-placeholder-fr="Jean" data-placeholder-en="John" placeholder="Jean" required>
           </div>
           <div class="form-group">
             <label data-fr="NOM *" data-en="LAST NAME *">NOM *</label>
-            <input type="text" id="lastName" data-placeholder-fr="Tremblay" data-placeholder-en="Smith" placeholder="Tremblay" required>
+            <input type="text" id="lastName" name="lastName" data-placeholder-fr="Tremblay" data-placeholder-en="Smith" placeholder="Tremblay" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label data-fr="TÉLÉPHONE *" data-en="PHONE *">TÉLÉPHONE *</label>
-            <input type="tel" id="phone" data-placeholder-fr="514 000-0000" data-placeholder-en="514 000-0000" placeholder="514 000-0000" required>
+            <input type="tel" id="phone" name="phone" data-placeholder-fr="514 000-0000" data-placeholder-en="514 000-0000" placeholder="514 000-0000" required>
           </div>
           <div class="form-group">
             <label data-fr="COURRIEL" data-en="EMAIL">COURRIEL</label>
-            <input type="email" id="email" data-placeholder-fr="exemple@email.com" data-placeholder-en="example@email.com" placeholder="exemple@email.com">
+            <input type="email" id="email" name="email" data-placeholder-fr="exemple@email.com" data-placeholder-en="example@email.com" placeholder="exemple@email.com">
           </div>
         </div>
         <div class="form-group">
           <label data-fr="TYPE DE SERVICE *" data-en="TYPE OF SERVICE *">TYPE DE SERVICE *</label>
-          <select id="serviceType" required>
+          <select id="serviceType" name="serviceType" required>
             <option value="" data-fr="— Sélectionnez un service —" data-en="— Select a service —">— Sélectionnez un service —</option>
             <option value="installation"      data-fr="Installation électrique" data-en="Electrical Installation">Installation électrique</option>
             <option value="renovation"        data-fr="Rénovation électrique"   data-en="Electrical Renovation">Rénovation électrique</option>
@@ -1126,7 +1129,7 @@ footer {
         </div>
         <div class="form-group">
           <label data-fr="TYPE DE BÂTIMENT" data-en="BUILDING TYPE">TYPE DE BÂTIMENT</label>
-          <select id="buildingType">
+          <select id="buildingType" name="buildingType">
             <option value="" data-fr="— Sélectionnez —" data-en="— Select —">— Sélectionnez —</option>
             <option value="maison"     data-fr="Maison unifamiliale" data-en="Single-family home">Maison unifamiliale</option>
             <option value="condo"      data-fr="Condo / Appartement" data-en="Condo / Apartment">Condo / Appartement</option>
@@ -1137,9 +1140,9 @@ footer {
         </div>
         <div class="form-group">
           <label data-fr="MESSAGE / DESCRIPTION DU PROJET" data-en="MESSAGE / PROJECT DESCRIPTION">MESSAGE / DESCRIPTION DU PROJET</label>
-          <textarea id="message" data-placeholder-fr="Décrivez votre projet ou problème électrique..." data-placeholder-en="Describe your electrical project or issue..." placeholder="Décrivez votre projet ou problème électrique..."></textarea>
+          <textarea id="message" name="message" data-placeholder-fr="Décrivez votre projet ou problème électrique..." data-placeholder-en="Describe your electrical project or issue..." placeholder="Décrivez votre projet ou problème électrique..."></textarea>
         </div>
-        <button class="form-submit" onclick="submitForm()" data-fr="⚡ ENVOYER MA DEMANDE" data-en="⚡ SEND MY REQUEST">⚡ ENVOYER MA DEMANDE</button>
+        <button id="submitBtn" class="form-submit" onclick="submitForm()" data-fr="⚡ ENVOYER MA DEMANDE" data-en="⚡ SEND MY REQUEST">⚡ ENVOYER MA DEMANDE</button>
       </div>
 
       <!-- Success message -->
@@ -1255,11 +1258,12 @@ document.getElementById('mobileMenu').addEventListener('click', (e) => {
 });
 
 /* ===== FORM SUBMIT ===== */
-function submitForm() {
+async function submitForm() {
   const firstName   = document.getElementById('firstName').value.trim();
   const phone       = document.getElementById('phone').value.trim();
   const email       = document.getElementById('email').value.trim();
   const serviceType = document.getElementById('serviceType').value;
+  const submitBtn   = document.getElementById('submitBtn');
   
   if (!firstName || !phone || !serviceType) {
     const msg = currentLang === 'fr'
@@ -1275,22 +1279,50 @@ function submitForm() {
     return;
   }
 
-  const alertMsg = currentLang === 'fr' 
-    ? "Votre application de messagerie va s'ouvrir pour envoyer le courriel."
-    : "Your email application will open to send the request.";
-  alert(alertMsg);
+  // Disable button and show loading
+  const originalBtnText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
 
-  // Build mailto
-  const lastName    = document.getElementById('lastName').value.trim();
-  const building    = document.getElementById('buildingType').value;
-  const message     = document.getElementById('message').value.trim();
-  const subject     = encodeURIComponent('Demande de soumission — Capital Électrique');
-  const body        = encodeURIComponent(
-    `Nom: ${firstName} ${lastName}\nTéléphone: ${phone}\nCourriel: ${email}\nService: ${serviceType}\nBâtiment: ${building}\n\nMessage:\n${message}`
-  );
-  window.location.href = `mailto:Contact@capitalectrique.ca?subject=${subject}&body=${body}`;
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+  // Build FormData
+  const formData = new FormData();
+  formData.append('access_key', document.getElementById('access_key').value);
+  formData.append('from_name', 'Capital Électrique Website');
+  formData.append('subject', `Demande de soumission — ${firstName} ${document.getElementById('lastName').value}`);
+  formData.append('firstName', firstName);
+  formData.append('lastName', document.getElementById('lastName').value.trim());
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('serviceType', serviceType);
+  formData.append('buildingType', document.getElementById('buildingType').value);
+  formData.append('message', document.getElementById('message').value.trim());
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      console.error(result);
+      alert(currentLang === 'fr' 
+        ? "Une erreur est survenue lors de l'envoi. Veuillez réessayer." 
+        : "An error occurred while sending. Please try again.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert(currentLang === 'fr' 
+      ? "Une erreur de connexion est survenue." 
+      : "A connection error occurred.");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+  }
 }
 
 function resetForm() {
